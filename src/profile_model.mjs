@@ -5,6 +5,7 @@ const tableName = config.aws.profileTableName;
 
 export class ProfileModel {
   static createDefaultProfile(userId) {
+    console.log("attempting to create default profile")
     const now = new Date().toISOString();
     return {
       id: userId,
@@ -19,6 +20,7 @@ export class ProfileModel {
   }
 
   static async getProfile(userId) {
+    console.log("attempting to get profile")
     try {
       const params = {
         TableName: tableName,
@@ -41,6 +43,7 @@ export class ProfileModel {
   }
 
   static async saveProfile(profile) {
+    console.log("attempting to save profile")
     try {
       const params = {
         TableName: tableName,
@@ -55,6 +58,7 @@ export class ProfileModel {
   }
 
   static async updateProfile(userId, updates) {
+    console.log("attempting to update profile")
     try {
       // Get existing profile
       const profile = await this.getProfile(userId);
@@ -77,6 +81,7 @@ export class ProfileModel {
   }
 
   static async addInterest(userId, interest) {
+    console.log("attempting to add interest")
     try {
       if (!interest) {
         throw new Error('Interest cannot be empty');
@@ -97,6 +102,7 @@ export class ProfileModel {
   }
 
   static async removeInterest(userId, interest) {
+    console.log("attempting to remove interest")
     try {
       if (!interest) {
         throw new Error('Interest cannot be empty');
@@ -120,6 +126,7 @@ export class ProfileModel {
   }
 
   static async addConnection(userId, connection) {
+    console.log("attempting to add connection")
     try {
       if (!connection) {
         throw new Error('Connection cannot be empty');
@@ -140,6 +147,7 @@ export class ProfileModel {
   }
 
   static async removeConnection(userId, connection) {
+    console.log("attempting to remove connection")
     try {
       if (!connection) {
         throw new Error('Connection cannot be empty');
@@ -163,6 +171,7 @@ export class ProfileModel {
   }
 
   static async listProfiles(limit = 50) {
+    console.log("attempting to list profile")
     try {
       const params = {
         TableName: tableName,
@@ -181,6 +190,7 @@ export class ProfileModel {
   }
 
   static async deleteProfile(userId) {
+    console.log("attempting to delete profile")
     try {
       const params = {
         TableName: tableName,
